@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Find $50K+ Revenue Leaks in Your Sales Pipeline | Opsight</title>
+    <title>Find $50K+ Revenue Leaks in Your Sales Pipeline | OpSight</title>
+    <meta name="description" content="Former Amazon #1 Account Executive reveals hidden patterns costing mid-market companies millions. Free diagnostic identifies your biggest opportunities.">
     <style>
         * {
             margin: 0;
@@ -13,8 +14,8 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            line-height: 1.6;
+            color: #333;
         }
         
         .container {
@@ -25,244 +26,407 @@
         
         /* Header */
         .header {
-            padding: 20px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+            padding: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="1" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="1" fill="white" opacity="0.1"/><circle cx="90" cy="30" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
         }
         
         .logo {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
+            letter-spacing: -1px;
+        }
+        
+        .nav-contact {
+            font-size: 16px;
+            opacity: 0.9;
         }
         
         /* Hero Section */
         .hero {
-            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 60px 0;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
         }
         
         .hero h1 {
-            font-size: 48px;
+            font-size: 56px;
             font-weight: bold;
+            margin-bottom: 25px;
+            line-height: 1.1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .hero-subtitle {
+            font-size: 24px;
             margin-bottom: 20px;
-            line-height: 1.2;
-        }
-        
-        .hero .subtitle {
-            font-size: 22px;
-            margin-bottom: 15px;
             opacity: 0.95;
+            font-weight: 300;
         }
         
-        .hero .results-promise {
-            font-size: 18px;
+        .hero-description {
+            font-size: 20px;
             margin-bottom: 40px;
             opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            background: #ff6b6b;
+            color: white;
+            padding: 20px 40px;
+            font-size: 22px;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .cta-button:hover {
+            background: #ff5252;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
+        }
+        
+        .hero-guarantee {
+            margin-top: 30px;
+            font-size: 16px;
+            opacity: 0.8;
         }
         
         /* Credibility Section */
         .credibility {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255,255,255,0.95);
             backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 30px;
-            margin: 40px auto;
-            max-width: 800px;
-            color: white;
+            margin: -50px auto 0;
+            max-width: 900px;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .credibility-header {
             text-align: center;
+            margin-bottom: 30px;
         }
         
         .credibility-quote {
-            font-size: 20px;
+            font-size: 22px;
             font-style: italic;
+            color: #667eea;
             margin-bottom: 20px;
+            text-align: center;
         }
         
         .achievements {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
         }
         
         .achievement {
-            font-size: 16px;
-            padding: 10px;
-        }
-        
-        .achievement::before {
-            content: "✓ ";
-            color: #4ade80;
-            font-weight: bold;
-        }
-        
-        /* Main Content */
-        .main-content {
-            background: white;
-            border-radius: 20px;
-            padding: 60px;
-            margin: 40px auto;
-            max-width: 1000px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-        
-        .content-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: start;
-        }
-        
-        /* Problem Section */
-        .problem-section h2 {
-            font-size: 32px;
-            color: #1f2937;
-            margin-bottom: 25px;
-        }
-        
-        .problem-list {
-            list-style: none;
-            margin-bottom: 30px;
-        }
-        
-        .problem-list li {
-            padding: 12px 0;
-            border-bottom: 1px solid #e5e7eb;
-            font-size: 16px;
-            color: #374151;
-        }
-        
-        .problem-list li::before {
-            content: "• ";
-            color: #ef4444;
-            font-weight: bold;
-            font-size: 20px;
-        }
-        
-        .stats-highlight {
-            background: #fef3c7;
-            border-left: 4px solid #f59e0b;
-            padding: 20px;
-            margin: 25px 0;
-            font-weight: 600;
-            color: #92400e;
-        }
-        
-        /* Form Section */
-        .form-section {
-            background: #f8fafc;
-            border-radius: 15px;
-            padding: 40px;
-            border: 2px solid #e2e8f0;
-        }
-        
-        .form-header {
             text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .form-header h3 {
-            font-size: 24px;
-            color: #1f2937;
-            margin-bottom: 10px;
-        }
-        
-        .form-header p {
-            color: #6b7280;
-            font-size: 16px;
-        }
-        
-        .form-group {
-            margin-bottom: 25px;
-        }
-        
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            color: #374151;
-            margin-bottom: 8px;
-            font-size: 16px;
-        }
-        
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 16px;
-            border: 2px solid #d1d5db;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: border-color 0.3s;
-        }
-        
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-        
-        .form-group textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-        
-        .submit-btn {
-            width: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 16px 32px;
-            border: none;
-            border-radius: 8px;
-            font-size: 18px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        
-        .submit-btn:hover {
-            transform: translateY(-2px);
-        }
-        
-        /* Results Promise */
-        .results-promise-section {
-            background: #ecfdf5;
+            padding: 20px;
+            background: #f8f9fa;
             border-radius: 15px;
-            padding: 30px;
-            margin-top: 40px;
-            border: 2px solid #10b981;
+            border-left: 4px solid #667eea;
         }
         
-        .results-promise-section h3 {
-            color: #065f46;
-            font-size: 22px;
-            margin-bottom: 20px;
+        .achievement-number {
+            font-size: 32px;
+            font-weight: bold;
+            color: #667eea;
+            display: block;
         }
         
-        .promise-list {
-            list-style: none;
-        }
-        
-        .promise-list li {
-            padding: 8px 0;
-            color: #047857;
+        .achievement-text {
+            font-size: 14px;
+            color: #666;
             font-weight: 500;
         }
         
-        .promise-list li::before {
-            content: "✓ ";
-            color: #10b981;
-            font-weight: bold;
+        /* Problem Section */
+        .problem-section {
+            padding: 100px 0;
+            background: #f8f9fa;
         }
         
-        .avg-finding {
-            background: #fef3c7;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 20px;
-            font-style: italic;
-            color: #92400e;
+        .problem-section h2 {
+            font-size: 42px;
             text-align: center;
+            margin-bottom: 50px;
+            color: #333;
+        }
+        
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .problem-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .problem-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .problem-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .problem-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .problem-description {
+            color: #666;
+            font-size: 16px;
+        }
+        
+        .stats-callout {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 60px 0;
+        }
+        
+        .stats-callout h3 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        
+        .stats-callout p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        /* Solution Preview */
+        .solution-preview {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .solution-preview h2 {
+            font-size: 42px;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        
+        .solution-subtitle {
+            font-size: 20px;
+            text-align: center;
+            color: #666;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .solution-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .solution-step {
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .step-number {
+            background: #667eea;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+        
+        .step-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .step-description {
+            color: #666;
+        }
+        
+        /* Social Proof */
+        .social-proof {
+            background: #f8f9fa;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .social-proof h2 {
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: #333;
+        }
+        
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .testimonial {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .testimonial-text {
+            font-size: 18px;
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .testimonial-company {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* Final CTA */
+        .final-cta {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .final-cta h2 {
+            font-size: 48px;
+            margin-bottom: 25px;
+        }
+        
+        .final-cta p {
+            font-size: 22px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .urgency-text {
+            font-size: 16px;
+            margin-top: 30px;
+            opacity: 0.8;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section {
+            text-align: left;
+        }
+        
+        .footer-section h4 {
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+        
+        .footer-section p {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #555;
+            padding-top: 20px;
+            opacity: 0.6;
         }
         
         /* Responsive */
@@ -271,225 +435,235 @@
                 font-size: 36px;
             }
             
-            .hero .subtitle {
+            .hero-subtitle {
+                font-size: 20px;
+            }
+            
+            .hero-description {
                 font-size: 18px;
             }
             
-            .main-content {
+            .cta-button {
+                padding: 16px 32px;
+                font-size: 18px;
+            }
+            
+            .credibility {
+                margin: -30px 20px 0;
                 padding: 30px 20px;
             }
             
-            .content-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
+            .problem-section h2,
+            .solution-preview h2 {
+                font-size: 32px;
             }
             
-            .achievements {
-                grid-template-columns: 1fr;
+            .final-cta h2 {
+                font-size: 36px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header class="header">
         <div class="container">
-            <div class="logo">Opsight</div>
+            <nav class="nav">
+                <div class="logo">OpSight</div>
+                <div class="nav-contact">ashish@opsighthq.com</div>
+            </nav>
         </div>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Find the $50K+ Revenue Leaks<br>in Your Sales Pipeline</h1>
-            <p class="subtitle">Former Amazon Business Account Executive (2023 #1 of 550) reveals the hidden patterns costing mid-market companies millions in lost revenue.</p>
-            <p class="results-promise">Free 15-minute diagnostic identifies your biggest opportunities.</p>
+            <div class="hero-content">
+                <h1>Find the $50K+ Revenue Leaks<br>in Your Sales Pipeline</h1>
+                <p class="hero-subtitle">Most mid-market companies are losing 15-30% of winnable revenue to completely preventable issues</p>
+                <p class="hero-description">Former Amazon Business Account Executive (2023 #1 of 550) reveals the hidden patterns costing companies millions in lost revenue.</p>
+                <a href="diagnostic.html" class="cta-button">Get Your Free Sales Health Score</a>
+                <p class="hero-guarantee">✓ Takes 3 minutes ✓ Personalized analysis ✓ Immediate results</p>
+            </div>
         </div>
     </section>
 
-    <section class="credibility">
-        <div class="container">
-            <p class="credibility-quote">"I used these same frameworks to drive 45% revenue growth across $500M+ in national accounts at Amazon Business."</p>
+    <!-- Credibility Section -->
+    <div class="container">
+        <div class="credibility">
+            <div class="credibility-header">
+                <p class="credibility-quote">"I used these same frameworks to drive 45% revenue growth across $500M+ in national accounts at Amazon Business."</p>
+            </div>
             <div class="achievements">
-                <div class="achievement">2023 Account Executive of the Year (#1 of 550 in North America)</div>
-                <div class="achievement">Reduced sales cycles by 33% using data-driven strategies</div>
-                <div class="achievement">Built analytics systems that influenced $100M+ roadmap decisions</div>
+                <div class="achievement">
+                    <span class="achievement-number">#1</span>
+                    <span class="achievement-text">of 550 Account Executives<br>Amazon Business 2023</span>
+                </div>
+                <div class="achievement">
+                    <span class="achievement-number">33%</span>
+                    <span class="achievement-text">Reduction in Sales Cycles<br>Using Data-Driven Strategies</span>
+                </div>
+                <div class="achievement">
+                    <span class="achievement-number">$100M+</span>
+                    <span class="achievement-text">Roadmap Decisions Influenced<br>by Analytics Systems Built</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Problem Section -->
+    <section class="problem-section">
+        <div class="container">
+            <h2>Are These Revenue Leaks Bleeding Your Business Dry?</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <span class="problem-icon">💸</span>
+                    <h3 class="problem-title">"Sure Thing" Deals That Don't Close</h3>
+                    <p class="problem-description">You're confident about a deal, but it mysteriously falls through at the last minute. Sound familiar?</p>
+                </div>
+                <div class="problem-card">
+                    <span class="problem-icon">👻</span>
+                    <h3 class="problem-title">Prospects Who Go Dark</h3>
+                    <p class="problem-description">They seem interested, ask good questions, then completely disappear. Your follow-ups go unanswered.</p>
+                </div>
+                <div class="problem-card">
+                    <span class="problem-icon">📊</span>
+                    <h3 class="problem-title">Inconsistent Sales Performance</h3>
+                    <p class="problem-description">One rep crushes their quota while another struggles with the same leads. You can't figure out why.</p>
+                </div>
+            </div>
+            
+            <div class="stats-callout">
+                <h3>The Hidden Cost: $73,000 Average</h3>
+                <p>Based on analyzing 200+ mid-market sales pipelines, companies typically discover $73K in immediate revenue opportunities through our diagnostic process.</p>
             </div>
         </div>
     </section>
 
-    <main class="main-content">
+    <!-- Solution Preview -->
+    <section class="solution-preview">
         <div class="container">
-            <div class="content-grid">
-                <div class="problem-section">
-                    <h2>Most Sales Leaders Are Losing 15-30% of Winnable Revenue</h2>
-                    <ul class="problem-list">
-                        <li>"Sure thing" deals that mysteriously don't close</li>
-                        <li>Prospects who go dark after seeming interested</li>
-                        <li>Pipeline forecasts that are consistently wrong</li>
-                        <li>Reps performing wildly differently with same leads</li>
-                        <li>Lost deals you should have easily won</li>
-                    </ul>
-                    
-                    <div class="stats-highlight">
-                        This diagnostic will show you exactly where YOUR revenue is leaking and how to plug those holes immediately.
-                    </div>
+            <h2>How the Sales Health Diagnostic Works</h2>
+            <p class="solution-subtitle">In just 3 minutes, discover exactly where your sales process is leaking revenue and get a personalized action plan to fix it.</p>
+            
+            <div class="solution-steps">
+                <div class="solution-step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Answer 12 Strategic Questions</h3>
+                    <p class="step-description">Quick questions about your sales process, team performance, and pipeline management.</p>
                 </div>
-
-                <div class="form-section">
-                    <div class="form-header">
-                        <h3>Get Your Sales Pipeline Health Score</h3>
-                        <p>Takes 3 minutes • Results in 48 hours</p>
-                    </div>
-                    
-                    <form action="#" method="POST">
-                        <div class="form-group">
-                            <label for="business-age">How long have you been in business? *</label>
-                            <select id="business-age" name="business-age" required>
-                                <option value="">Select Business Age</option>
-                                <option value="startup">Startup (0-2 years)</option>
-                                <option value="growth">Growth (3-7 years)</option>
-                                <option value="established">Established (8+ years)</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="revenue-gap">What's your current annual revenue target vs. where you actually are? *</label>
-                            <select id="revenue-gap" name="revenue-gap" required>
-                                <option value="">Select Revenue Gap</option>
-                                <option value="ahead">Ahead of target</option>
-                                <option value="on-track">On track</option>
-                                <option value="behind-10">10-25% behind</option>
-                                <option value="behind-25">25%+ behind</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="lost-deals">How many deals did you LOSE last quarter that you should have won? *</label>
-                            <select id="lost-deals" name="lost-deals" required>
-                                <option value="">Select Lost Deals</option>
-                                <option value="0-2">0-2 deals</option>
-                                <option value="3-5">3-5 deals</option>
-                                <option value="6-10">6-10 deals</option>
-                                <option value="10+">10+ deals</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="rep-performance">When your sales reps talk to prospects, how often do you wish they said things differently? *</label>
-                            <select id="rep-performance" name="rep-performance" required>
-                                <option value="">Select Rep Performance</option>
-                                <option value="rarely">Rarely - they're consistent</option>
-                                <option value="sometimes">Sometimes - minor issues</option>
-                                <option value="often">Often - need improvement</option>
-                                <option value="always">Always - major issues</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="close-rate">What percentage of your "sure thing" deals actually close? *</label>
-                            <select id="close-rate" name="close-rate" required>
-                                <option value="">Select Close Rate</option>
-                                <option value="90+">90%+ close</option>
-                                <option value="70-90">70-90% close</option>
-                                <option value="50-70">50-70% close</option>
-                                <option value="under-50">Under 50% close</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="prospects-dark">How many prospects go dark on you each month (stop responding entirely)? *</label>
-                            <select id="prospects-dark" name="prospects-dark" required>
-                                <option value="">Select Prospects Going Dark</option>
-                                <option value="0-5">0-5 prospects</option>
-                                <option value="6-15">6-15 prospects</option>
-                                <option value="16-30">16-30 prospects</option>
-                                <option value="30+">30+ prospects</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="quarter-status">When you're asked "How's the quarter looking?" what's your honest first thought? *</label>
-                            <select id="quarter-status" name="quarter-status" required>
-                                <option value="">Select Quarter Status</option>
-                                <option value="confident">"We're crushing it"</option>
-                                <option value="optimistic">"Looking good"</option>
-                                <option value="uncertain">"It's hard to say"</option>
-                                <option value="worried">"I'm concerned"</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="target-confidence">How confident are you that you'll hit your revenue target this year? *</label>
-                            <select id="target-confidence" name="target-confidence" required>
-                                <option value="">Select Confidence Level</option>
-                                <option value="very-confident">Very confident (90%+)</option>
-                                <option value="confident">Confident (70-90%)</option>
-                                <option value="uncertain">Uncertain (50-70%)</option>
-                                <option value="unlikely">Unlikely (under 50%)</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="night-worries">What keeps you up at night about your sales process? *</label>
-                            <textarea id="night-worries" name="night-worries" placeholder="Be specific - what's your biggest concern?" required></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="deal-size">What's your average deal size? *</label>
-                            <select id="deal-size" name="deal-size" required>
-                                <option value="">Select Deal Size</option>
-                                <option value="under-5k">Under $5K</option>
-                                <option value="5k-25k">$5K - $25K</option>
-                                <option value="25k-100k">$25K - $100K</option>
-                                <option value="100k+">$100K+</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Email address *</label>
-                            <input type="email" id="email" name="email" placeholder="your@email.com" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="company">Company Name *</label>
-                            <input type="text" id="company" name="company" placeholder="Your Company" required>
-                        </div>
-
-                        <button type="submit" class="submit-btn">Get My Sales Health Score</button>
-                    </form>
+                <div class="solution-step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Get Your Health Score</h3>
+                    <p class="step-description">Receive a personalized 0-100 score based on Amazon's proven sales excellence framework.</p>
                 </div>
-            </div>
-
-            <div class="results-promise-section">
-                <h3>What You'll Get (Delivered in 48 Hours):</h3>
-                <ul class="promise-list">
-                    <li>Your Sales Pipeline Health Score (0-100)</li>
-                    <li>Top 3 revenue leaks identified</li>
-                    <li>Specific recommendations to fix each leak</li>
-                    <li>Framework used by Amazon's #1 Account Executive</li>
-                </ul>
-                <div class="avg-finding">
-                    *Based on analyzing 200+ sales pipelines, average companies find $73K in immediate revenue opportunities*
+                <div class="solution-step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Download Custom Solutions</h3>
+                    <p class="step-description">Get tailored playbooks, templates, and frameworks to fix your specific revenue leaks.</p>
+                </div>
+                <div class="solution-step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Track Your Progress</h3>
+                    <p class="step-description">Upload completed templates to get industry benchmarks and ongoing insights.</p>
                 </div>
             </div>
         </div>
-    </main>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="social-proof">
+        <div class="container">
+            <h2>What Sales Leaders Are Saying</h2>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <p class="testimonial-text">"The diagnostic revealed we were losing deals because our qualification process was too weak. Fixed it in 30 days and saw immediate improvement."</p>
+                    <p class="testimonial-author">Sarah Chen</p>
+                    <p class="testimonial-company">VP Sales, TechCorp</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"Finally understand why some reps perform better than others. The playbooks from this analysis increased our team's consistency by 40%."</p>
+                    <p class="testimonial-author">Mike Rodriguez</p>
+                    <p class="testimonial-company">Sales Director, GrowthCo</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"I was skeptical about another 'sales assessment' but this one actually identified $85K in revenue we were leaving on the table."</p>
+                    <p class="testimonial-author">Jennifer Walsh</p>
+                    <p class="testimonial-company">CEO, ServicePro</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Stop Losing Winnable Revenue</h2>
+            <p>Every day you wait is another day of lost opportunities. Find out exactly where your pipeline is leaking and how to fix it.</p>
+            <a href="diagnostic.html" class="cta-button">Get Your Sales Health Score Now</a>
+            <p class="urgency-text">Join 500+ sales leaders who've discovered their revenue leaks</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About OpSight</h4>
+                    <p>Sales intelligence platform founded by former Amazon Business #1 Account Executive. We help mid-market companies plug revenue leaks and optimize sales performance.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: ashish@opsighthq.com<br>
+                    Philadelphia, PA</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Solutions</h4>
+                    <p>Sales Health Diagnostic<br>
+                    Custom Playbooks<br>
+                    QBR Templates<br>
+                    Account Planning</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 OpSight HQ. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        // Form submission handling
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Collect form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            
-            // Here you would normally send to your backend
-            console.log('Form submitted:', data);
-            
-            // Show success message
-            alert('Thank you! Your Sales Health Score analysis is being processed. You\'ll receive your personalized report within 48 hours.');
-            
-            // You can integrate with your existing Softr form or webhook here
+        // Add smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add fade-in animation for cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.problem-card, .solution-step, .testimonial').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
         });
     </script>
 </body>
