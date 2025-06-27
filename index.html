@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Growth Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            background: #ff6b6b;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Main Content */
+        main {
+            padding: 4rem 0;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .service-card p {
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+
+        .service-button {
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .service-button:hover {
+            background: #5a6fd8;
+        }
+
+        /* Results Section */
+        .results-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+            display: none;
+        }
+
+        .results-section.active {
+            display: block;
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .results-content {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .recommendations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .recommendation-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .recommendation-card h4 {
+            margin-bottom: 1rem;
+        }
+
+        .recommendation-card .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">BusinessGrowth Pro</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#results">Results</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Unlock Your Business Potential</h1>
+            <p>Get personalized insights and actionable recommendations to accelerate your business growth with our AI-powered diagnostic tools.</p>
+            <a href="#" class="cta-button" onclick="startDiagnostic()">Get Your Free Sales Diagnostic</a>
+        </div>
+    </section>
+
+    <main class="container">
+        <section id="services" class="section">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Sales Diagnostics Report</h3>
+                    <p>Comprehensive analysis of your sales process with personalized recommendations for improvement.</p>
+                    <a href="#" class="service-button" onclick="startDiagnostic()">Start Free Diagnostic</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">📈</div>
+                    <h3>Advanced Analytics</h3>
+                    <p>Deep-dive analytics and ongoing performance monitoring to track your business growth.</p>
+                    <a href="#" class="service-button" onclick="showServiceDetails('analytics')">Learn More</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3>Account Management</h3>
+                    <p>Dedicated account management to implement strategies and ensure continuous improvement.</p>
+                    <a href="#" class="service-button" onclick="showServiceDetails('management')">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="results" class="results-section">
+            <div class="results-header">
+                <h2>Your Diagnostic Results</h2>
+                <p>Based on your responses, here's your personalized business growth plan:</p>
+            </div>
+            
+            <div class="results-content">
+                <div id="diagnostic-results">
+                    <div class="loading"></div>
+                    <p>Generating your personalized report...</p>
+                </div>
+            </div>
+
+            <div class="recommendations" id="recommendations" style="display: none;">
+                <div class="recommendation-card">
+                    <h4>Advanced Analytics Package</h4>
+                    <p>Perfect for your current growth stage</p>
+                    <div class="price">$297/month</div>
+                    <a href="#" class="cta-button" onclick="selectService('analytics')">Get Started</a>
+                </div>
+                
+                <div class="recommendation-card">
+                    <h4>Full Account Management</h4>
+                    <p>Comprehensive growth solution</p>
+                    <div class="price">$597/month</div>
+                    <a href="#" class="cta-button" onclick="selectService('management')">Get Started</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <p>&copy; 2025 BusinessGrowth Pro. Empowering businesses with AI-driven insights.</p>
+            <p>Contact: hello@businessgrowthpro.com | (555) 123-4567</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simulate diagnostic process
+        function startDiagnostic() {
+            // In production, this would redirect to your Softr form
+            alert('Redirecting to diagnostic questionnaire...\n\nIn production, this will link to your Softr form.');
+            
+            // For demo purposes, simulate showing results
+            setTimeout(() => {
+                showResults();
+            }, 2000);
+        }
+
+        function showResults() {
+            const resultsSection = document.getElementById('results');
+            resultsSection.classList.add('active');
+            resultsSection.scrollIntoView({ behavior: 'smooth' });
+            
+            // Simulate Claude generating results
+            setTimeout(() => {
+                const resultsDiv = document.getElementById('diagnostic-results');
+                resultsDiv.innerHTML = `
+                    <h3>Your Sales Diagnostic Results</h3>
+                    <div style="background: white; padding: 1.5rem; border-radius: 8px; margin: 1rem 0;">
+                        <h4>Key Findings:</h4>
+                        <ul style="margin: 1rem 0; padding-left: 2rem;">
+                            <li>Lead conversion rate is 23% below industry average</li>
+                            <li>Sales cycle length could be reduced by 30%</li>
+                            <li>Customer retention shows strong potential for improvement</li>
+                        </ul>
+                        
+                        <h4>Recommended Actions:</h4>
+                        <ol style="margin: 1rem 0; padding-left: 2rem;">
+                            <li>Implement automated lead nurturing sequences</li>
+                            <li>Optimize your sales funnel with better qualification</li>
+                            <li>Develop customer success programs for retention</li>
+                        </ol>
+                        
+                        <p style="margin-top: 1rem; font-style: italic;">
+                            This analysis is based on your responses and industry benchmarks. 
+                            For detailed implementation strategies, consider our premium services below.
+                        </p>
+                    </div>
+                `;
+                
+                document.getElementById('recommendations').style.display = 'grid';
+            }, 3000);
+        }
+
+        function showServiceDetails(service) {
+            const services = {
+                analytics: {
+                    name: 'Advanced Analytics Package',
+                    description: 'Comprehensive business analytics with monthly reports, KPI tracking, and growth recommendations.',
+                    features: ['Monthly performance reports', 'Custom dashboard', 'Competitor analysis', 'Growth recommendations'],
+                    price: '$297/month'
+                },
+                management: {
+                    name: 'Full Account Management',
+                    description: 'Complete business growth management with dedicated account manager and implementation support.',
+                    features: ['Dedicated account manager', 'Strategy implementation', 'Monthly growth calls', 'Priority support'],
+                    price: '$597/month'
+                }
+            };
+            
+            const serviceInfo = services[service];
+            alert(`${serviceInfo.name}\n\n${serviceInfo.description}\n\nFeatures:\n• ${serviceInfo.features.join('\n• ')}\n\nPrice: ${serviceInfo.price}`);
+        }
+
+        function selectService(service) {
+            alert(`Great choice! You'll be redirected to secure checkout for the ${service} package.\n\nIn production, this would integrate with your payment processor.`);
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
