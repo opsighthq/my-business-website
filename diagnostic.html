@@ -473,24 +473,30 @@
             </div>
         </div>
     </main>
+</div>
+        </div>
+    </main>
 
     <script>
-        // Form submission handling
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Collect form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            
-            // Here you would normally send to your backend
-            console.log('Form submitted:', data);
-            
-            // Show success message
-            alert('Thank you! Your Sales Health Score analysis is being processed. You\'ll receive your personalized report within 48 hours.');
-            
-            // You can integrate with your existing Softr form or webhook here
-        });
+    // Simple form submission with loading state
+    document.querySelector('form').addEventListener('submit', function(e) {
+        // Show loading message
+        const submitBtn = document.querySelector('.submit-btn');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Analyzing Your Sales Process...';
+        submitBtn.disabled = true;
+        
+        // Let the form submit normally to Make.com
+        // Make.com will handle the redirect automatically
+        
+        // Optional: Add timeout fallback in case something goes wrong
+        setTimeout(function() {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        }, 30000); // Reset after 30 seconds if no redirect
+    });
     </script>
+</body>
+</html>
 </body>
 </html>
